@@ -20,6 +20,7 @@ const numKeys = document.querySelectorAll('.num');
 const operatorKey = document.querySelectorAll('.operator');
 const equal = document.querySelector('.eval');
 const clear = document.querySelector('.clear');
+const del = document.querySelector('.delete');
 let defaultDisplay = true;
 let num1, num2, operator, result;
 
@@ -65,4 +66,8 @@ clear.addEventListener('click', ()=>{
     num2 = 0;
     display.textContent = 0;
     defaultDisplay = true;
+})
+
+del.addEventListener('click', ()=>{
+    display.textContent = display.textContent.slice(0, display.textContent.length - 1)
 })
