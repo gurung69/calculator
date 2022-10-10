@@ -34,6 +34,14 @@ numKeys.forEach(key => {
 
 operatorKey.forEach(key => {
     key.addEventListener('click', ()=>{
+        if (num1 && operator && display.textContent && !defaultDisplay){
+            num2 = parseFloat(display.textContent);
+            result = operate(num1, num2, operator);
+            defaultDisplay = true;
+            display.textContent = result;
+            num1 = 0;
+            num2 = 0;
+        }
         num1 = parseFloat(display.textContent);
         operator = key.value;
         defaultDisplay = true;
