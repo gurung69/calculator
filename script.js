@@ -18,7 +18,8 @@ function operate(num1, num2, operator){
 const display = document.querySelector('.display');
 const numKeys = document.querySelectorAll('.num');
 const operatorKey = document.querySelectorAll('.operator');
-const equal = document.querySelector('.eval')
+const equal = document.querySelector('.eval');
+const clear = document.querySelector('.clear');
 let defaultDisplay = true;
 let num1, num2, operator, result;
 
@@ -57,4 +58,11 @@ equal.addEventListener('click', ()=>{
         num1 = 0;
         num2 = 0;
     }
+})
+
+clear.addEventListener('click', ()=>{
+    num1 = 0;
+    num2 = 0;
+    display.textContent = 0;
+    defaultDisplay = true;
 })
