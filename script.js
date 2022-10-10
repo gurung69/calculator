@@ -2,9 +2,25 @@ function clearDisplay(){
     display.textContent = '';
 }
 
+function operate(num1, num2, operator){
+    switch (operator){
+        case '+': 
+            return num1 + num2;
+        case '-':
+            return num1 - num2;
+        case '*':
+            return num1 * num2;
+        case '/':
+            return num1 / num2;
+    }
+}
+
 const display = document.querySelector('.display');
 const numKeys = document.querySelectorAll('.num');
+const operatorKey = document.querySelectorAll('.operator');
+const equal = document.querySelector('.eval')
 let defaultDisplay = true;
+let num1, num2, operator, result;
 
 numKeys.forEach(key => {
     key.addEventListener('click', e => {
@@ -14,4 +30,23 @@ numKeys.forEach(key => {
         }
         display.textContent += key.value;
     })
+})
+
+operatorKey.forEach(key => {
+    key.addEventListener('click', ()=>{
+        num1 = parseFloat(display.textContent);
+        operator = key.value;
+        defaultDisplay = true;
+    })
+})
+
+equal.addEventListener('click', ()=>{
+    num2 = parseFloat(display.textContent);
+    if (num1 && num2 && operator){
+        result = operate(num1, num2, operator);
+        defaultDisplay = true;
+        display.textContent = result;
+        num1 = 0;
+        num2 = 0;
+    }
 })
