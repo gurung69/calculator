@@ -40,6 +40,7 @@ dec.addEventListener('click', ()=>{
     if(!occurDecimal){
         display.textContent += dec.value;
         occurDecimal = !occurDecimal;
+        defaultDisplay = !defaultDisplay;
     }
 })
 
