@@ -37,10 +37,9 @@ numKeys.forEach(key => {
 })
 
 dec.addEventListener('click', ()=>{
-    if(!occurDecimal){
+    if(!occurDecimal && !defaultDisplay){
         display.textContent += dec.value;
         occurDecimal = !occurDecimal;
-        defaultDisplay = !defaultDisplay;
     }
 })
 
@@ -50,6 +49,7 @@ operatorKey.forEach(key => {
             num2 = parseFloat(display.textContent);
             result = operate(num1, num2, operator);
             defaultDisplay = true;
+            occurDecimal = false;
             display.textContent = result;
             num1 = 0;
             num2 = 0;
@@ -57,6 +57,7 @@ operatorKey.forEach(key => {
         num1 = parseFloat(display.textContent);
         operator = key.value;
         defaultDisplay = true;
+        occurDecimal = false;
     })
 })
 
@@ -76,6 +77,7 @@ clear.addEventListener('click', ()=>{
     num2 = 0;
     display.textContent = 0;
     defaultDisplay = true;
+    occurDecimal = false;
 })
 
 del.addEventListener('click', ()=>{
