@@ -21,7 +21,9 @@ const operatorKey = document.querySelectorAll('.operator');
 const equal = document.querySelector('.eval');
 const clear = document.querySelector('.clear');
 const del = document.querySelector('.delete');
+const dec = document.querySelector('.dec');
 let defaultDisplay = true;
+let occurDecimal = false;
 let num1, num2, operator, result;
 
 numKeys.forEach(key => {
@@ -32,6 +34,13 @@ numKeys.forEach(key => {
         }
         display.textContent += key.value;
     })
+})
+
+dec.addEventListener('click', ()=>{
+    if(!occurDecimal){
+        display.textContent += dec.value;
+        occurDecimal = !occurDecimal;
+    }
 })
 
 operatorKey.forEach(key => {
@@ -53,7 +62,7 @@ operatorKey.forEach(key => {
 equal.addEventListener('click', ()=>{
     num2 = parseFloat(display.textContent);
     if (num1 && num2 && operator){
-        result = operate(num1, num2, operator);
+        result = Math.round(operate(num1, num2, operator).toFixed(5) * 100000)/ 100000;
         defaultDisplay = true;
         display.textContent = result;
         num1 = 0;
